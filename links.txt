@@ -1,4 +1,6 @@
-BNT 1,https://tv.bnt.bg/
 BNT 1 HD,https://www.seirsanduk.online/?id=hd-bnt-1-hd&pass=&hash=
-Bulgaria ON AIR,https://www.predavatel.com/bg/play/tv_bgonair_live
-Nova TV,https://www.gledaitv.live/watch-tv/60/nova-tv-online
+BNT 2,https://www.seirsanduk.online/?id=bnt-2&pass=&hash=
+BNT 3 HD,https://www.seirsanduk.online/?id=hd-bnt-3-hd&pass=&hash=
+BNT 4,https://www.seirsanduk.online/?id=bnt-4&pass=&hash=
+Nova Tv,https://www.seirsanduk.online/?id=hd-nova-tv-hd&pass=&hash=
+BTV HD,https://www.seirsanduk.online/?id=hd-btv-hd&pass=&hash=
