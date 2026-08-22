@@ -10,12 +10,27 @@ def check_link(url):
         return False
 
 def extract_stream(url):
-    """Опитва се да извлече .m3u8 линк от страницата."""
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/110.0.0.0 Safari/537.36'}
+    """Търси .m3u8 линкове в страницата и вътре в нейните iframes."""
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
     try:
         response = requests.get(url, headers=headers, timeout=10)
-        # Търсим всякакви .m3u8 линкове в кода
-        matches = re.findall(r'(https?://[^\s"\']+\.m3u8[^\s"\']*)', response.text)
+        content = response.text
+        
+        # 1. Търсим директно в основната страница
+        matches = re.findall(r'(https?://[^\s"\']+\.m3u8[^\s"\']*)', content)
+        
+        # 2. Ако не намерим, търсим iframes и опитваме да влезем в тях
+        if not matches:
+            iframes = re.findall(r'<iframe.*?src=["\'](.*?)["\']', content)
+            for iframe_url in iframes:
+                if iframe_url.startswith('//'): iframe_url = 'https:' + iframe_url
+                if not iframe_url.startswith('http'): continue
+                
+                print(f"Проверка на iframe: {iframe_url}")
+                if_res = requests.get(iframe_url, headers=headers, timeout=5)
+                matches.extend(re.findall(r'(https?://[^\s"\']+\.m3u8[^\s"\']*)', if_res.text))
+
+        # Валидираме намерените линкове
         for link in matches:
             if check_link(link):
                 return link
