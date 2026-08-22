@@ -1,3 +1,13 @@
 #EXTM3U
 #EXTINF:-1, BNT 1 HD
-https://ro.glebul.com/hls/hd-bnt-1-hd/index.m3u8?e=1787388198&hash=TwYXrcKgklTd6ZqJdv7xzQ
+https://ro.glebul.com/hls/hd-bnt-1-hd/index.m3u8?e=1787389300&hash=daG8DFlYvAm_NqUMB6cq4Q
+#EXTINF:-1, BNT 2
+https://ro.glebul.com/hls/bnt-2/index.m3u8
+#EXTINF:-1, BNT 3 HD
+https://ro.glebul.com/hls/hd-bnt-3-hd/index.m3u8
+#EXTINF:-1, BNT 4
+https://ro.glebul.com/hls/bnt-4/index.m3u8?e=1787389305&hash=bzwRbkvKin1EI1xnqbyj7A
+#EXTINF:-1, Nova Tv
+https://cdn11.glebul.com/hls/hd-nova-tv-hd/index.m3u8?e=1787389306&hash=W7IR5OHKOcPuQKRZlS0QpA
+#EXTINF:-1, BTV HD
+https://ro.glebul.com/hls/hd-btv-hd/index.m3u8?e=1787389309&hash=r1JdP_vEAkAjEFg6f9FjMQ
