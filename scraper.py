@@ -7,7 +7,7 @@ def check_link(url, referer):
         'Referer': referer
     }
     try:
-        # Проверяваме дали линкът връща успех (200)
+        # Проверяваме дали стриймът е активен
         r = requests.get(url, headers=headers, timeout=5, stream=True)
         return r.status_code == 200
     except:
@@ -32,7 +32,7 @@ def extract_stream(url):
             if iframe_url.startswith('//'): iframe_url = 'https:' + iframe_url
             if not iframe_url.startswith('http'): continue
             try:
-                # Използваме headers, за да пробием защитата на iframe
+                print(f"  --> Проверка на iframe: {iframe_url}")
                 if_res = requests.get(iframe_url, headers=headers, timeout=7)
                 matches.extend(re.findall(r'(https?://[^\s"\']+\.m3u8[^\s"\']*)', if_res.text))
             except:
@@ -40,8 +40,8 @@ def extract_stream(url):
 
         unique_matches = list(set(matches))
         for link in unique_matches:
-            # ФИКС: Взимаме само чистия URL без кавички
-            clean_link = link.split('"').split("'")
+            # ИЗЧИСТВАНЕ НА ЛИНКА (ФИКСИРАНО)
+            clean_link = link.strip('"').strip("'")
             if check_link(clean_link, url):
                 return clean_link
     except Exception as e:
@@ -53,7 +53,7 @@ def main():
         with open("links.txt", "r", encoding="utf-8") as f:
             lines = f.readlines()
     except FileNotFoundError:
-        print("Файлът links.txt не е намерен!")
+        print("links.txt не е намерен")
         return
 
     with open("playlist.m3u", "w", encoding="utf-8") as out:
@@ -69,10 +69,9 @@ def main():
             
             if stream:
                 out.write(f"#EXTINF:-1, {name}\n{stream}\n")
-                print(f"УСПЕХ: Намерен стрийм!")
+                print(f"УСПЕХ!")
             else:
-                print(f"ПРОПУСК: Не е намерен работещ стрийм.")
+                print(f"ПРОПУСК")
 
 if __name__ == "__main__":
     main()
-    
