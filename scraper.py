@@ -74,7 +74,7 @@ def main():
     print(f"Намерени {len(channels)} потенциални канала.")
 
     with open("playlist.m3u", "w", encoding="utf-8") as out:
-        out.write("#EXTM3U\n")
+        out.write(f"#EXTINF:-1, {channel['name']}\n{stream}|User-Agent=Mozilla/5.0&Referer={BASE_URL}\n")
         for channel in channels:
             print(f"\n--- Обработка на: {channel['name']} ---")
             stream = extract_stream(channel['url'])
