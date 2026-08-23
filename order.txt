@@ -11,9 +11,11 @@ hd-euronews-bulgaria-hd
 kanal-3
 btv-cinema
 btv-story
-hd-diema-hd
-hd-kino-nova-hd
 hd-btv-comedy-hd
+hd-btv-action-hd
+hd-diema-hd
+hd-diema-family-hd
+hd-kino-nova-hd
 hd-star-channel-hd
 hd-star-life-hd
 hd-star-crime-hd
