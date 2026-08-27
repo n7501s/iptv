@@ -21,7 +21,7 @@ jobs:
         run: pip install requests
 
       - name: Run scraper
-        run: python scraper.py
+        run: python scraper_tv.py
 
       - name: Commit and push changes
         run: |
